@@ -1,0 +1,30 @@
+{
+  "name": "auth-user-node",
+  "version": "1.0.0",
+  "description": "backend authentication login and register user using node and express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmedAdham2018/auth-user-nodejs.git"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "mongodb",
+    "jwt"
+  ],
+  "author": "Ahmed Adham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AhmedAdham2018/auth-user-nodejs/issues"
+  },
+  "homepage": "https://github.com/AhmedAdham2018/auth-user-nodejs#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18"
+  }
+}
