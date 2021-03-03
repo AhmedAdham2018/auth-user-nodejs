@@ -3,6 +3,7 @@ const app = express();
 app.use(express.json());
 const routes = require('./routes/routes');
 require('./startup/db')();
+require('./startup/cors')(app);
 
 app.use('/api' , routes)
 
