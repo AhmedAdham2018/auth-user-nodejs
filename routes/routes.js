@@ -42,12 +42,44 @@ router.post('/login' , async (req , res ) => {
 
     res.cookie('jwt' , token , {
         httpOnly: true,
-        message: 24 * 60 * 60 * 1000
+        maxAge: 24 * 60 * 60 * 1000
     });
 
-    res.send(token);
+    res.send({
+        message: "User registered successfully"
+    });
 
-});    
+});
+
+router.get('/user' , async (req , res) => {
+    try {
+        const cookie = req.cookies['jwt'];
+
+        const claims = jwt.verify(cookie , 'adham');
+          
+        if (!claims) {
+            return res.status(401).send({
+            "message": "Unauthorized user"});
+        }
+    
+        const user = await User.findOne({_id: claims._id});
+        const {password , ...data} = await user.toJSON();
+        res.send(data);  
+    } catch (err) {
+        return res.status(401).send({
+        "message": "Unauthorized user"});
+    }    
+});
+
+router.post('logout' , (req , res) => {
+    res.cookie('jwt' , '' , {
+        maxAge: 0
+    });
+
+    res.send({
+        "message": "User logout successfully"
+    });
+});
 
 
 module.exports = router;
